@@ -18,7 +18,7 @@ class Bottles extends Model
         if ($next > 1) {
             return
                 "$number bottles of beer on the wall, $number bottles of beer.".PHP_EOL.
-                "Take one down and pass it around, {$next} bottles of beer on the wall.";
+                "Take one down and pass it around, $next bottles of beer on the wall.";
         }
 
         if ($next === 1) {
