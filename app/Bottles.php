@@ -41,14 +41,15 @@ class Bottles extends Model
     {
         switch ($number):
             case 0:
+                $next = $number - 1;
                 return
-                    "No more bottles of beer on the wall, no more bottles of beer.".PHP_EOL.
-                    "Go to the store and buy some more, 99 bottles of beer on the wall.";
+                    ucfirst($this->quantity($number))." {$this->container($number)} of beer on the wall, {$this->quantity($number)} bottles of beer.".PHP_EOL.
+                    "{$this->action($number)}, 99 bottles of beer on the wall.";
             default:
                 $next = $number - 1;
                 return
-                    "{$this->quantity($number)} {$this->container($number)} of beer on the wall, {$this->quantity($number)} {$this->container($number)} of beer.".PHP_EOL.
-                    "Take {$this->pronoun($number)} down and pass it around, {$this->quantity($next)} {$this->container($next)} of beer on the wall.";
+                    ucfirst($this->quantity($number))." {$this->container($number)} of beer on the wall, {$this->quantity($number)} {$this->container($number)} of beer.".PHP_EOL.
+                    "{$this->action($number)}, {$this->quantity($next)} {$this->container($next)} of beer on the wall.";
         endswitch;
     }
 
@@ -91,6 +92,20 @@ class Bottles extends Model
             return 'it';
         } else {
             return 'one';
+        }
+    }
+
+    /**
+     * @param int $number
+     * 
+     * @return string
+     * */
+    protected function action($number)
+    {
+        if ($number === 0) {
+            return 'Go to the store and buy some more';
+        } else {
+            return "Take {$this->pronoun($number)} down and pass it around";
         }
     }
 }
