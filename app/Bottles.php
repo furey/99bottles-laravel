@@ -37,7 +37,7 @@ class Bottles extends Model
      *
      * @return string
      * */
-    public static function verse($number)
+    public function verse($number)
     {
         switch ($number):
             case 2:
