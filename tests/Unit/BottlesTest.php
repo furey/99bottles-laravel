@@ -14,7 +14,7 @@ class BottlesTest extends TestCase
 99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
 VERSE;
-        $this->assertEquals($expected, Bottles::verse(99));
+        $this->assertEquals($expected, with(new Bottles)->verse(99));
     }
 
     /** @test */
@@ -24,7 +24,7 @@ VERSE;
 89 bottles of beer on the wall, 89 bottles of beer.
 Take one down and pass it around, 88 bottles of beer on the wall.
 VERSE;
-        $this->assertEquals($expected, Bottles::verse(89));
+        $this->assertEquals($expected, with(new Bottles)->verse(89));
     }
 
     /** @test */
@@ -34,7 +34,7 @@ VERSE;
 2 bottles of beer on the wall, 2 bottles of beer.
 Take one down and pass it around, 1 bottle of beer on the wall.
 VERSE;
-        $this->assertEquals($expected, Bottles::verse(2));
+        $this->assertEquals($expected, with(new Bottles)->verse(2));
     }
 
     /** @test */
@@ -44,7 +44,7 @@ VERSE;
 1 bottle of beer on the wall, 1 bottle of beer.
 Take it down and pass it around, no more bottles of beer on the wall.
 VERSE;
-        $this->assertEquals($expected, Bottles::verse(1));
+        $this->assertEquals($expected, with(new Bottles)->verse(1));
     }
 
     /** @test */
@@ -54,7 +54,7 @@ VERSE;
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
 VERSE;
-        $this->assertEquals($expected, Bottles::verse(0));
+        $this->assertEquals($expected, with(new Bottles)->verse(0));
     }
 
     /** @test */
@@ -67,7 +67,7 @@ Take one down and pass it around, 98 bottles of beer on the wall.
 98 bottles of beer on the wall, 98 bottles of beer.
 Take one down and pass it around, 97 bottles of beer on the wall.
 VERSES;
-        $this->assertEquals($expected, Bottles::verses(99, 98));
+        $this->assertEquals($expected, with(new Bottles)->verses(99, 98));
     }
 
     /** @test */
@@ -83,7 +83,7 @@ Take it down and pass it around, no more bottles of beer on the wall.
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
 VERSES;
-        $this->assertEquals($expected, Bottles::verses(2, 0));
+        $this->assertEquals($expected, with(new Bottles)->verses(2, 0));
     }
 
     /** @test */
@@ -390,6 +390,6 @@ Take it down and pass it around, no more bottles of beer on the wall.
 No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
 SONG;
-        $this->assertEquals($expected, Bottles::song());
+        $this->assertEquals($expected, with(new Bottles)->song());
     }
 }

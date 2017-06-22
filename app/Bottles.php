@@ -40,13 +40,13 @@ class Bottles extends Model
      *
      * @return string
      * */
-    public static function verses($current, $until)
+    public function verses($current, $until)
     {
-        $verses = static::verse($current);
+        $verses = $this->verse($current);
 
         while ($current > $until) {
             $current--;
-            $verses .= PHP_EOL.PHP_EOL.static::verse($current);
+            $verses .= PHP_EOL.PHP_EOL . $this->verse($current);
         }
 
         return $verses;
@@ -55,8 +55,8 @@ class Bottles extends Model
     /**
      * @return string
      * */
-    public static function song()
+    public function song()
     {
-        return static::verses(99, 0);
+        return $this->verses(99, 0);
     }
 }
