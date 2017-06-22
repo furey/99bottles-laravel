@@ -7,6 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 class Bottles extends Model
 {
     /**
+     * @return string
+     * */
+    public function song()
+    {
+        return $this->verses(99, 0);
+    }
+
+    /**
+     * @param int $current
+     * @param int $last
+     *
+     * @return string
+     * */
+    public function verses($current, $until)
+    {
+        $verses = $this->verse($current);
+
+        while ($current > $until) {
+            $current--;
+            $verses .= PHP_EOL.PHP_EOL . $this->verse($current);
+        }
+
+        return $verses;
+    }
+    
+    /**
      * @param int $number
      *
      * @return string
@@ -32,31 +58,5 @@ class Bottles extends Model
                     "$number bottles of beer on the wall, $number bottles of beer.".PHP_EOL.
                     "Take one down and pass it around, $next bottles of beer on the wall.";
         endswitch;
-    }
-
-    /**
-     * @param int $current
-     * @param int $last
-     *
-     * @return string
-     * */
-    public function verses($current, $until)
-    {
-        $verses = $this->verse($current);
-
-        while ($current > $until) {
-            $current--;
-            $verses .= PHP_EOL.PHP_EOL . $this->verse($current);
-        }
-
-        return $verses;
-    }
-
-    /**
-     * @return string
-     * */
-    public function song()
-    {
-        return $this->verses(99, 0);
     }
 }
