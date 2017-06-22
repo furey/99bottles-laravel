@@ -31,7 +31,7 @@ class Bottles extends Model
 
         return $verses;
     }
-    
+
     /**
      * @param int $number
      *
@@ -40,10 +40,6 @@ class Bottles extends Model
     public function verse($number)
     {
         switch ($number):
-            case 2:
-                return
-                    "2 bottles of beer on the wall, 2 bottles of beer.".PHP_EOL.
-                    "Take one down and pass it around, 1 bottle of beer on the wall.";
             case 1:
                 return 
                     "1 bottle of beer on the wall, 1 bottle of beer.".PHP_EOL.
@@ -55,8 +51,22 @@ class Bottles extends Model
             default:
                 $next = $number - 1;
                 return
-                    "$number bottles of beer on the wall, $number bottles of beer.".PHP_EOL.
-                    "Take one down and pass it around, $next bottles of beer on the wall.";
+                    "$number {$this->container($number)} of beer on the wall, $number {$this->container($number)} of beer.".PHP_EOL.
+                    "Take one down and pass it around, $next {$this->container($next)} of beer on the wall.";
         endswitch;
+    }
+
+    /**
+     * @param int $number
+     * 
+     * @return string
+     * */
+    protected function container($number)
+    {
+        if ($number > 1) {
+            return 'bottles';
+        } else {
+            return 'bottle';
+        }
     }
 }
