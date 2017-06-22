@@ -63,10 +63,10 @@ class Bottles extends Model
      * */
     protected function container($number)
     {
-        if ($number > 1) {
-            return 'bottles';
-        } else {
+        if ($number === 1) {
             return 'bottle';
+        } else {
+            return 'bottles';
         }
     }
 }
