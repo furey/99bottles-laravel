@@ -39,18 +39,11 @@ class Bottles extends Model
      * */
     public function verse($number)
     {
-        switch ($number):
-            case 0:
-                $next = $number - 1;
-                return
-                    ucfirst($this->quantity($number))." {$this->container($number)} of beer on the wall, {$this->quantity($number)} bottles of beer.".PHP_EOL.
-                    "{$this->action($number)}, 99 bottles of beer on the wall.";
-            default:
-                $next = $number - 1;
-                return
-                    ucfirst($this->quantity($number))." {$this->container($number)} of beer on the wall, {$this->quantity($number)} {$this->container($number)} of beer.".PHP_EOL.
-                    "{$this->action($number)}, {$this->quantity($next)} {$this->container($next)} of beer on the wall.";
-        endswitch;
+        return
+            ucfirst($this->quantity($number))." {$this->container($number)} of beer on the wall, ".
+            "{$this->quantity($number)} {$this->container($number)} of beer.".PHP_EOL.
+            "{$this->action($number)}, ".
+            "{$this->quantity($this->successor($number))} {$this->container($this->successor($number))} of beer on the wall.";
     }
 
     /**
@@ -106,6 +99,20 @@ class Bottles extends Model
             return 'Go to the store and buy some more';
         } else {
             return "Take {$this->pronoun($number)} down and pass it around";
+        }
+    }
+
+    /**
+     * @param int $number
+     * 
+     * @return int
+     * */
+    protected function successor($number)
+    {
+        if ($number === 0) {
+            return 99;
+        } else {
+            return $number - 1;
         }
     }
 }
