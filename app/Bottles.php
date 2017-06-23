@@ -79,12 +79,12 @@ class Bottles extends Model
      * 
      * @return string
      * */
-    protected function pronoun($number)
+    protected function action($number)
     {
-        if ($number === 1) {
-            return 'it';
+        if ($number === 0) {
+            return 'Go to the store and buy some more';
         } else {
-            return 'one';
+            return "Take {$this->pronoun($number)} down and pass it around";
         }
     }
 
@@ -93,12 +93,12 @@ class Bottles extends Model
      * 
      * @return string
      * */
-    protected function action($number)
+    protected function pronoun($number)
     {
-        if ($number === 0) {
-            return 'Go to the store and buy some more';
+        if ($number === 1) {
+            return 'it';
         } else {
-            return "Take {$this->pronoun($number)} down and pass it around";
+            return 'one';
         }
     }
 
