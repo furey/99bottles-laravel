@@ -15,21 +15,16 @@ class Bottles extends Model
     }
 
     /**
-     * @param int $current
-     * @param int $last
+     * @param int $finish
+     * @param int $start
      *
      * @return string
      * */
-    public function verses($current, $until)
+    public function verses($finish, $start)
     {
-        $verses = $this->verse($current);
-
-        while ($current > $until) {
-            $current--;
-            $verses .= PHP_EOL.PHP_EOL . $this->verse($current);
-        }
-
-        return $verses;
+        return collect(range($finish, $start))->map(function ($number) {
+            return $this->verse($number);
+        })->implode(PHP_EOL.PHP_EOL);
     }
 
     /**
