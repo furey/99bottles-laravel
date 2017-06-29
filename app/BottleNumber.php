@@ -28,6 +28,9 @@ class BottleNumber
             case 1:
                 $type = BottleNumber1::class;
                 break;
+            case 6:
+                $type = BottleNumber6::class;
+                break;
             default:
                 $type = BottleNumber::class;
                 break;
