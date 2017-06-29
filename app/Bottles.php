@@ -33,12 +33,11 @@ class Bottles
     public function verse($number)
     {
         $bottleNumber = BottleNumber::for($number);
-        $nextBottleNumber = BottleNumber::for($bottleNumber->successor());
 
         return
             ucfirst("{$bottleNumber} of beer on the wall, ").
             "{$bottleNumber} of beer.".PHP_EOL.
             "{$bottleNumber->action()}, ".
-            "{$nextBottleNumber} of beer on the wall.";
+            "{$bottleNumber->successor()} of beer on the wall.";
     }
 }

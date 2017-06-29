@@ -21,10 +21,10 @@ class BottleNumber0 extends BottleNumber
     }
 
     /**
-     * @return int
+     * @return BottleNumber
      * */
     function successor()
     {
-        return 99;
+        return BottleNumber::for(99);
     }
 }

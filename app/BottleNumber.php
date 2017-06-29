@@ -17,7 +17,7 @@ class BottleNumber
      * 
      * @param int $number
      * 
-     * @return mixed
+     * @return BottleNumber
      * */
     public static function for($number)
     {
@@ -77,10 +77,10 @@ class BottleNumber
     }
 
     /**
-     * @return int
+     * @return BottleNumber
      * */
     function successor()
     {
-        return $this->number - 1;
+        return BottleNumber::for($this->number - 1);
     }
 }
