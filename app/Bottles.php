@@ -33,12 +33,12 @@ class Bottles
     public function verse($number)
     {
         $bottleNumber = new BottleNumber($number);
-        $bottleNumberSuccessor = new BottleNumber($bottleNumber->successor());
+        $nextBottleNumber = new BottleNumber($bottleNumber->successor());
 
         return
-            ucfirst($bottleNumber->quantity())." {$bottleNumber->container()} of beer on the wall, ".
-            "{$bottleNumber->quantity()} {$bottleNumber->container()} of beer.".PHP_EOL.
+            ucfirst("{$bottleNumber} of beer on the wall, ").
+            "{$bottleNumber} of beer.".PHP_EOL.
             "{$bottleNumber->action()}, ".
-            "{$bottleNumberSuccessor->quantity()} {$bottleNumberSuccessor->container()} of beer on the wall.";
+            "{$nextBottleNumber} of beer on the wall.";
     }
 }

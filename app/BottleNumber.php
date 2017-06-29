@@ -15,6 +15,14 @@ class BottleNumber
     /**
      * @return string
      * */
+    function __toString()
+    {
+        return "{$this->quantity()} {$this->container()}";
+    }
+
+    /**
+     * @return string
+     * */
     function quantity()
     {
         if ($this->number === 0) {
