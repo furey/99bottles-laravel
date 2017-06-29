@@ -13,6 +13,30 @@ class BottleNumber
     }
 
     /**
+     * Factory.
+     * 
+     * @param int $number
+     * 
+     * @return mixed
+     * */
+    public static function for($number)
+    {
+        switch ($number) {
+            case 0:
+                $type = BottleNumber0::class;
+                break;
+            case 1:
+                $type = BottleNumber1::class;
+                break;
+            default:
+                $type = BottleNumber::class;
+                break;
+        }
+
+        return new $type($number);
+    }
+
+    /**
      * @return string
      * */
     function __toString()
@@ -25,11 +49,7 @@ class BottleNumber
      * */
     function quantity()
     {
-        if ($this->number === 0) {
-            return 'no more';
-        } else {
-            return (string) $this->number;
-        }
+        return (string) $this->number;
     }
 
     /**
@@ -37,11 +57,7 @@ class BottleNumber
      * */
     function container()
     {
-        if ($this->number === 1) {
-            return 'bottle';
-        } else {
-            return 'bottles';
-        }
+        return 'bottles';
     }
 
     /**
@@ -49,11 +65,7 @@ class BottleNumber
      * */
     function action()
     {
-        if ($this->number === 0) {
-            return 'Go to the store and buy some more';
-        } else {
-            return "Take {$this->pronoun()} down and pass it around";
-        }
+        return "Take {$this->pronoun()} down and pass it around";
     }
 
     /**
@@ -61,11 +73,7 @@ class BottleNumber
      * */
     function pronoun()
     {
-        if ($this->number === 1) {
-            return 'it';
-        } else {
-            return 'one';
-        }
+        return 'one';
     }
 
     /**
@@ -73,10 +81,6 @@ class BottleNumber
      * */
     function successor()
     {
-        if ($this->number === 0) {
-            return 99;
-        } else {
-            return $this->number - 1;
-        }
+        return $this->number - 1;
     }
 }
